@@ -32,4 +32,4 @@ ARG DEBIAN
 ARG NGINX
 
 COPY --from=builder /srv/ngx_http_brotli_filter_module.so /debian-${DEBIAN}-${NGINX}-ngx_http_brotli_filter_module.so
-COPY --from=builder /srv/ngx_http_brotli_filter_module.so /debian-${DEBIAN}-${NGINX}-ngx_http_brotli_static_module.so
+COPY --from=builder /srv/ngx_http_brotli_static_module.so /debian-${DEBIAN}-${NGINX}-ngx_http_brotli_static_module.so

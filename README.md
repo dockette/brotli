@@ -1,11 +1,14 @@
 <h1 align=center>Brotli (precompiled)</h1>
 
 <p align=center>
-   🦾Precompiled brotli binaries for Nginx and other tools.
+   <a href="https://github.com/dockette/brotli/actions"><img src="https://github.com/dockette/brotli/actions/workflows/docker.yml/badge.svg" alt="GitHub Actions"></a>
+   <a href="https://hub.docker.com/r/dockette/brotli"><img src="https://img.shields.io/docker/pulls/dockette/brotli.svg" alt="Docker Hub pulls"></a>
+   <a href="https://github.com/sponsors/f3l1x"><img src="https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa" alt="GitHub Sponsors"></a>
+   <a href="https://github.com/orgs/dockette/discussions"><img src="https://img.shields.io/badge/support-discussions-6f42c1" alt="Support/Discussions"></a>
 </p>
 
 <p align=center>
-🕹 <a href="https://f3l1x.io">f3l1x.io</a> | 💻 <a href="https://github.com/f3l1x">f3l1x</a> | 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
+   Precompiled Brotli dynamic modules for NGINX.
 </p>
 
 -----
@@ -20,7 +23,8 @@ ENV NGINX_MODULES=/usr/lib/nginx/modules
 
 RUN apt update
 RUN apt install -y nginx curl
-RUN curl -L https://github.com/f00b4r/brotli/releases/download/latest/debian-buster-${NGINX_VERSION}-ngx_http_brotli_filter_module.so -o ${NGINX_MODULES}/ngx_http_brotli_filter_module.so &&
+RUN curl -L https://github.com/dockette/brotli/releases/download/latest/debian-buster-${NGINX_VERSION}-ngx_http_brotli_filter_module.so \
+    -o ${NGINX_MODULES}/ngx_http_brotli_filter_module.so
 ```
 
 ## Build
@@ -29,18 +33,11 @@ This repo using tool [Docker](https://docs.docker.com/get-docker/).
 
 ```
 make build
+make test
 ```
 
-## Development
+Artifacts are exported to `dist/`.
 
-See [how to contribute](https://contributte.org/contributing.html) to this package.
+## Maintenance
 
-This package is currently maintained by these authors.
-
-<a href="https://github.com/f3l1x">
-    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
-</a>
-
------
-
-Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Also thank you for using this package.
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
