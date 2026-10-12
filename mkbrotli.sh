@@ -48,7 +48,10 @@ wget https://nginx.org/download/nginx-${ngver}.tar.gz && { tar zxf nginx-${ngver
 
 # Download, initialize, and make Brotli dynamic modules
 git clone https://github.com/google/ngx_brotli.git
-cd ngx_brotli && git submodule update --init && cd ../nginx-${ngver}
+cd ngx_brotli && git submodule update --init
+# ngx_brotli no longer builds the bundled brotli itself: build static PIC libs into deps/brotli/out first
+mkdir -p deps/brotli/out && (cd deps/brotli/out && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_C_FLAGS="-O2 -fPIC" .. && cmake --build . --config Release --target brotlienc) || { echo '!! brotli build failed, exiting...'; exit 3; }
+cd ../nginx-${ngver}
 [ ${confparams} ] && nice -n 19 ionice -c 3 ./configure --add-dynamic-module=../ngx_brotli "${confparams}" || nice -n 19 ionice -c 3 ./configure --with-compat --add-dynamic-module=../ngx_brotli
 nice -n 19 ionice -c 3 make modules || { echo '!! configure or make failed, exiting...'; exit 4; }
 

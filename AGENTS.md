@@ -9,7 +9,7 @@ Dockette Brotli builds precompiled NGINX Brotli dynamic module artifacts with Do
 - Default image name for local Docker tagging: `dockette/brotli`.
 - Build context: repository root `.` with `Dockerfile` and `mkbrotli.sh`.
 - Default NGINX version: `1.23.3` via `NGINX_VERSION` in `Makefile`.
-- Default Debian releases: `buster` and `bullseye` via `DEBIAN_RELEASES` in `Makefile`.
+- Default Debian releases: `bookworm` and `trixie` via `DEBIAN_RELEASES` in `Makefile`.
 - Exported artifacts are written to `dist/` and named `debian-<release>-<nginx>-ngx_http_brotli_<filter|static>_module.so`.
 
 ## Commands
