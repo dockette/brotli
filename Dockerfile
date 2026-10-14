@@ -1,22 +1,21 @@
-ARG DEBIAN=buster
+ARG DEBIAN=bookworm
 
-FROM debian:${DEBIAN} as builder
+FROM debian:${DEBIAN} AS builder
 
 ARG NGINX=1.22.0
 
 RUN apt update && \
     apt dist-upgrade -y && \
     apt install --no-install-recommends --no-install-suggests -y \
-        gnupg1 \
-        apt-transport-https \
         ca-certificates \
         git \
         gcc \
         wget \
         make \
+        cmake \
         sudo \
-        libpcre3 \
-        libpcre3-dev \
+        libpcre2-8-0 \
+        libpcre2-dev \
         zlib1g \
         zlib1g-dev \
         openssl \

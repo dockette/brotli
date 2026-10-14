@@ -2,20 +2,20 @@ DOCKER_IMAGE=dockette/brotli
 DOCKER_TAG?=latest
 DOCKER_PLATFORMS?=linux/amd64,linux/arm64
 DOCKER_BUILD_PLATFORM?=linux/amd64
-DEBIAN_RELEASES?=buster bullseye
+DEBIAN_RELEASES?=bookworm trixie
 DIST_DIR?=dist
 NGINX_VERSION?=1.23.3
 
 .PHONY: build
-build: build-buster build-bullseye
+build: build-bookworm build-trixie
 
-.PHONY: build-bullseye
-build-bullseye:
-	${MAKE} build-release DEBIAN_RELEASE=bullseye
+.PHONY: build-trixie
+build-trixie:
+	${MAKE} build-release DEBIAN_RELEASE=trixie
 
-.PHONY: build-buster
-build-buster:
-	${MAKE} build-release DEBIAN_RELEASE=buster
+.PHONY: build-bookworm
+build-bookworm:
+	${MAKE} build-release DEBIAN_RELEASE=bookworm
 
 .PHONY: build-release
 build-release:
